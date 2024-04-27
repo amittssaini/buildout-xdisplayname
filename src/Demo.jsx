@@ -23,7 +23,7 @@ const Demo = () => {
         const {firstName,lastName}=name;
         console.log(firstName,lastName);
         if(firstName&&lastName){
-        setFullName(`${firstName} ${lastName}`)
+        setFullName(`Full Name: ${firstName} ${lastName}`)
         }
     }
   
@@ -40,7 +40,7 @@ const Demo = () => {
         <button type='sumbit'>Submit</button>
         </form>
         <div>
-            <p>Full Name: {fullName}</p>
+            <p> {fullName}</p>
         </div>
     </div>
   )
