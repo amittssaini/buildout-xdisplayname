@@ -5,6 +5,8 @@ const Demo = () => {
         firstName:'',
         lastName:''
     })
+    const [fullName,setFullName]=useState('');
+
 
     const handleInput = (e) => {
         const key = e.target.name;
@@ -16,24 +18,29 @@ const Demo = () => {
     }
     
 
-    const fetchFullName=()=>{
+    const fetchFullName=(e)=>{
+        e.preventDefault();
         const {firstName,lastName}=name;
         console.log(firstName,lastName);
+        if(firstName&&lastName){
         setFullName(`${firstName} ${lastName}`)
+        }
     }
-    const [fullName,setFullName]=useState('');
+  
   return (
     <div>
+        <form onSubmit={fetchFullName}>
         <h1>Full Name Display</h1>
         <label htmlFor="first-name">First Name: </label>
-        <input id='first-name' value={name.firstName} name='firstName' onChange={handleInput} />
+        <input id='first-name' value={name.firstName} required name='firstName' onChange={handleInput}/>
         <br/>
         <label htmlFor='last-name'>Last Name: </label>
-        <input id='last-name' value={name.lastName} name='lastName' onChange={handleInput} />
+        <input id='last-name' value={name.lastName} required name='lastName' onChange={handleInput}/>
         <br/>
-        <button onClick={fetchFullName}>Submit</button>
+        <button type='sumbit'>Submit</button>
+        </form>
         <div>
-            <h3>{fullName}</h3>
+            <p>Full Name: {fullName}</p>
         </div>
     </div>
   )
